@@ -10,26 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_26_204048) do
+ActiveRecord::Schema.define(version: 2018_07_26_213942) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "gossip_id"
+    t.integer "like_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["gossip_id"], name: "index_comments_on_gossip_id"
+    t.index ["like_id"], name: "index_comments_on_like_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "gossips", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "like_id"
     t.string "title"
     t.text "content"
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["like_id"], name: "index_gossips_on_like_id"
     t.index ["user_id"], name: "index_gossips_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.boolean "like"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "private_messages", force: :cascade do |t|
@@ -52,6 +62,7 @@ ActiveRecord::Schema.define(version: 2018_07_26_204048) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer "gossipings_id"
     t.string "first_name"
     t.string "last_name"
     t.text "description"
@@ -60,6 +71,7 @@ ActiveRecord::Schema.define(version: 2018_07_26_204048) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ville_id"
+    t.index ["gossipings_id"], name: "index_users_on_gossipings_id"
     t.index ["ville_id"], name: "index_users_on_ville_id"
   end
 
