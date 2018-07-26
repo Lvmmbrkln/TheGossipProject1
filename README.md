@@ -1,6 +1,6 @@
 # README
 A Rails application which manipulate database.  
-Fan of Gossip Girl ? Stay here and enjoy this app will produce a platform of gossip!
+Fan of Gossip Girl ? Stay here and enjoy this app which produce a platform of gossip!
 
 ## Installation
 
