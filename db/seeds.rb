@@ -38,6 +38,6 @@ nb_comment = 12
 
 
 nb_comment.times do
-	Comment.create(user_id: rand(User.first.id..User.last.id), gossip_id: rand(Gossip.first.id..Gossip.last.id), content: Fake::Movie.quote)
+	Comment.create!(user_id: rand(User.first.id..User.last.id), gossip_id: rand(Gossip.first.id..Gossip.last.id), content: Faker::Movie.quote)
 end
 puts "-- Création de #{nb_comment} commentaires --"
